@@ -60,9 +60,9 @@ class MainActivity : DebugActivity() {
         }
     }
 
-    fun onLogin(ra: String, password: String, callback: (result: Boolean) -> Unit) {
+    fun onLogin(usuario: String, senha: String, callback: (result: Boolean) -> Unit) {
         val url = "https://account.impacta.edu.br/account/enter.php"
-        val params = listOf("desidentificacao" to ra, "dessenha" to password)
+        val params = listOf("desidentificacao" to usuario, "dessenha" to senha)
 
         Fuel.post(url, params)
             .responseJson { request, response, result ->
