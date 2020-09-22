@@ -18,4 +18,8 @@
         <item name="colorPrimary">#9C2780</item>
     </style>
 
+    <style name="AppTheme.ToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="titleTextAppearance">@android:style/TextAppearance.Material.Widget.Toolbar.Title</item>
+    </style>
+
 </resources>

@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">App Golden Bear Company</string>
-    <string name="mensagem_inicial">Bem-vindo a Golden</string>
+    <string name="app_name">Bem-vindo a Golden Bear Company</string>
+    <string name="mensagem_inicial">Faça seu Login!</string>
 
     <string name="action_buscar">Buscar</string>
     <string name="action_atualizar">Atualizar</string>
     <string name="action_adicionar">Adicionar</string>
     <string name="action_config">Configuração</string>
+    <string name="action_sair">Sair</string>
 </resources>

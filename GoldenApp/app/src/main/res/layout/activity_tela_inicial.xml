@@ -5,30 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context=".TelaInicialActivity">
+    <include layout="@layout/toolbar" />
 
-    <include layout="@layout/toolbar"></include>
-    <ScrollView
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="15dp">
+
             <TextView
                 android:id="@+id/mensagemInicial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="20dp"
                 android:text="Seja Bem-vindo aos produtos da Golden" />
 
             <Button
-                android:id="@+id/botaoSair"
+                android:id="@+id/btnCamisas"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sair" />
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:text="Camisas" />
+
+            <Button
+                android:id="@+id/btnCalcas"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:text="Calcas" />
+
+            <Button
+                android:id="@+id/btnCordoes"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:text="Cordoes" />
+
+            <Button
+                android:id="@+id/btnAcessorios"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:text="Acessorios" />
+
         </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

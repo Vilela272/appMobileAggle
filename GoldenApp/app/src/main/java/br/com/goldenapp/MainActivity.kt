@@ -3,7 +3,11 @@ package br.com.goldenapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.json.responseJson
 import kotlinx.android.synthetic.main.login.*
 
 class MainActivity : DebugActivity() {
@@ -15,41 +19,35 @@ class MainActivity : DebugActivity() {
 
         campoImagem.setImageResource(R.drawable.golden_bear_logo)
 
-        // segunda forma: delegar para método
-        buttonLogin.setOnClickListener { onClickLogin() }
+        buttonLogin.setOnClickListener {
+            val usuario = campoUsuario.text.toString()
+            val senha = campoSenha.text.toString()
 
-    }
+            btnLoginLoading.visibility = View.VISIBLE
+            buttonLogin.text = ""
 
-    fun onClickLogin() {
+            onLogin(usuario, senha) {
+                btnLoginLoading.visibility = View.INVISIBLE
 
-        val valorUsuario = campoUsuario.text.toString()
-        val valorSenha = campoSenha.text.toString()
-        //Toast.makeText(context, "$valorUsuario : $valorSenha", Toast.LENGTH_LONG).show()
-
-        if((valorUsuario == "aluno") && (valorSenha == "impacta")) {
-            this.acessarTelaInicial()
-            val intent = Intent(context, TelaInicialActivity::class.java)
-            intent.putExtra("nome", valorUsuario)
-            intent.putExtra("numero", 10)
-            startActivity(intent)
-        }
-        else if((valorUsuario == "") || (valorSenha == "")) {
-            Toast.makeText(
-                applicationContext,
-                "Usuário e/ou senha não podem ser nulos",
-                Toast.LENGTH_LONG
-            ).show()
-        }
-        else {
-            Toast.makeText(
-                applicationContext,
-                "Usuário e/ou senha incorretos",
-                Toast.LENGTH_LONG
-            ).show()
+                if ((usuario == "aluno") && (senha == "impacta")) {
+                    this.acessarTelaInicial()
+                    val intent = Intent(context, TelaInicialActivity::class.java)
+                    intent.putExtra("nome", usuario)
+                    intent.putExtra("numero", 10)
+                    startActivity(intent)
+                }
+                else if ((usuario == "") || (senha == "")) {
+                    Toast.makeText(applicationContext, "Usuário e/ou senha em branco", Toast.LENGTH_LONG).show()
+                }
+                else {
+                    Toast.makeText(applicationContext, "Usuário e/ou senha incorretos", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 
-    fun acessarTelaInicial(){
+    fun acessarTelaInicial() {
+        var intent = Intent(this, TelaInicialActivity::class.java)
         startActivity(intent)
         this.finish()
     }
@@ -60,5 +58,21 @@ class MainActivity : DebugActivity() {
             val result = data?.getStringExtra("result")
             Toast.makeText(context, "$result", Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun onLogin(ra: String, password: String, callback: (result: Boolean) -> Unit) {
+        val url = "https://account.impacta.edu.br/account/enter.php"
+        val params = listOf("desidentificacao" to ra, "dessenha" to password)
+
+        Fuel.post(url, params)
+            .responseJson { request, response, result ->
+                result.fold(success = { json ->
+                    callback(json.obj().get("success") == true)
+                    btnLoginLoading.visibility = View.INVISIBLE
+                }, failure = { error ->
+                    Toast.makeText(applicationContext, "Erro inesperado", Toast.LENGTH_SHORT).show()
+                    Log.i("RequestResult", error.toString())
+                })
+            }
     }
 }

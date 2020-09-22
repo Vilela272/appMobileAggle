@@ -24,24 +24,19 @@ open class DebugActivity : AppCompatActivity() {
         Log.d(TAG, className + ".onStart() chamado")
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG,className + ".onRestart() foi chamado")
-    }
-
     override fun onResume() {
         super.onResume()
         Log.d(TAG, className + ".onResume() foi chamado")
     }
 
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, className + ".onPause() foi chamado")
-    }
-
     override fun onStop() {
         super.onStop()
         Log.d(TAG, className + ".onStop() foi chamado")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG,className + ".onRestart() foi chamado")
     }
 
     override fun onDestroy() {
