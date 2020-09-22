@@ -1,5 +1,5 @@
 <h1 align="center">
-     GOLDEN BERAR COMPANY - App Kotlin   💜🚀
+     GOLDEN BEAR COMPANY - App Kotlin   💜🚀
 </h1>
 
 ### :scroll: Sobre
