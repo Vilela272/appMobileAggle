@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bem-vindo a Golden Bear Company</string>
+    <string name="app_name">Golden Bear Company</string>
     <string name="mensagem_inicial">Faça seu Login!</string>
 
     <string name="action_buscar">Buscar</string>
@@ -7,4 +7,10 @@
     <string name="action_adicionar">Adicionar</string>
     <string name="action_config">Configuração</string>
     <string name="action_sair">Sair</string>
+    <string name="nav_produtos">Produtos</string>
+    <string name="nav_forum">Forum</string>
+    <string name="nav_mensagem">Mensagem</string>
+    <string name="nav_localizacao">Localizacao</string>
+    <string name="nav_abrir">Abrir</string>
+    <string name="nav_fechar">Fechar</string>
 </resources>

@@ -9,8 +9,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
+import kotlinx.android.synthetic.main.navigation_menu.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class TelaInicialActivity : DebugActivity() {
@@ -21,10 +27,33 @@ class TelaInicialActivity : DebugActivity() {
         setContentView(R.layout.activity_tela_inicial)
         setSupportActionBar(toolbar)
 
-        btnCamisas.setOnClickListener { openBranchActivity("Camisas") }
-        btnCalcas.setOnClickListener { openBranchActivity("Calcas") }
-        btnCordoes.setOnClickListener { openBranchActivity("Cordoes") }
-        btnAcessorios.setOnClickListener { openBranchActivity("Acessorios") }
+        this.generic_layout = layoutMenuLateral
+        supportActionBar?.title = "Lista de Produtos"
+        mensagemInicial.text = "Produtos Golden Bear"
+        configuraMenuLateral()
+
+        recyclerProdutos?.layoutManager = LinearLayoutManager(this)
+        recyclerProdutos?.itemAnimator = DefaultItemAnimator()
+        recyclerProdutos?.setHasFixedSize(true)
+
+    }
+    override fun onResume() {
+        super.onResume()
+        taskProdutos()
+    }
+
+    var produtos = listOf<Produto>()
+
+    fun taskProdutos() {
+        this.produtos = ProdutoService.getProdutos()
+        recyclerProdutos?.adapter = ProdutosAdapter(this.produtos) {onClickProduto(it)}
+    }
+
+    fun onClickProduto(produto: Produto) {
+
+        val intent = Intent(this, ProdutoActivity::class.java)
+        intent.putExtra("produto", produto)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -52,9 +81,9 @@ class TelaInicialActivity : DebugActivity() {
         when(item.itemId) {
             R.id.action_atualizar -> this.onLoading()
             R.id.action_config -> {
-                var intent = Intent(this, SettingsActivity::class.java)
+                val intent = Intent(this, SettingsActivity::class.java)
+                Toast.makeText(this, "Clicou no botão de configurações", Toast.LENGTH_LONG).show()
                 startActivity(intent)
-                this.onLoading()
             }
             R.id.action_sair -> {
                 val intent = Intent(this, MainActivity::class.java)
@@ -72,11 +101,5 @@ class TelaInicialActivity : DebugActivity() {
             Thread.sleep(10000)
             progressBar.visibility = View.INVISIBLE
         }).start()
-    }
-
-    fun openBranchActivity(branch: String) {
-        var intent = Intent(this, BranchActivity::class.java)
-        intent.putExtra("branch", branch)
-        startActivity(intent)
     }
 }

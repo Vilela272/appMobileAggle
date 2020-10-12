@@ -11,9 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BranchActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".TelaInicialActivity" android:theme="@style/AppTheme.Toolbar" />
+        <activity android:name=".ProdutoActivity"></activity>
+        <activity
+            android:name=".ConfiguracaoActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".LocalizacaoActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".MensagemActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".ForumActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity
+            android:name=".TelaInicialActivity"
+            android:theme="@style/AppTheme.Toolbar" />
         <activity android:name=".DebugActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

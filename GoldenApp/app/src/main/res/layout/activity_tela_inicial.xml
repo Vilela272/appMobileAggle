@@ -1,65 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutMenuLateral"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary"
-    tools:context=".TelaInicialActivity">
-    <include layout="@layout/toolbar" />
+    android:fitsSystemWindows="true">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:visibility="invisible" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        tools:context=".TelaInicialActivity">
 
-        <LinearLayout
+        <include layout="@layout/toolbar" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="invisible" />
 
-            <TextView
-                android:id="@+id/mensagemInicial"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/colorAccent"
-                android:textSize="20dp"
-                android:text="Seja Bem-vindo aos produtos da Golden" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="15dp">
 
-            <Button
-                android:id="@+id/btnCamisas"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="20dp"
-                android:text="Camisas" />
+                <TextView
+                    android:id="@+id/mensagemInicial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/btnCalcas"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="20dp"
-                android:text="Calcas" />
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btnCordoes"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="20dp"
-                android:text="Cordoes" />
+                    <!-- Colocar cardview com as disciplinas-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerProdutos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cacheColorHint="@android:color/transparent"
+                        android:clipToPadding="false"
+                        android:divider="@null"
+                        android:dividerHeight="0dp"
+                        android:listSelector="@android:color/transparent"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbars="vertical">
+                    </androidx.recyclerview.widget.RecyclerView>
 
-            <Button
-                android:id="@+id/btnAcessorios"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="20dp"
-                android:text="Acessorios" />
+                </ScrollView>
+            </LinearLayout>
 
-        </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
+
+    <!-- Menu Lateral-->
+    <include layout="@layout/navigation_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

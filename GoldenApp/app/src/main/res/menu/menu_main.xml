@@ -12,13 +12,12 @@
         android:id="@+id/action_atualizar"
         android:icon="@drawable/ic_atualizar_white"
         android:title="@string/action_atualizar"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_config"
         android:title="@string/action_config"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_sair"
