@@ -17,11 +17,16 @@ class MainActivity : DebugActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
 
+        campoUsuario.setText(Prefs.getString("lembrarNome"))
+        campoSenha.setText(Prefs.getString("lembrarSenha"))
+        checkLembrar.isChecked = Prefs.getBoolean("lembrar")
+
         campoImagem.setImageResource(R.drawable.golden_bear_logo)
 
         buttonLogin.setOnClickListener {
             val usuario = campoUsuario.text.toString()
             val senha = campoSenha.text.toString()
+            val remember = checkLembrar.isChecked
 
             btnLoginLoading.visibility = View.VISIBLE
             buttonLogin.text = ""
@@ -41,6 +46,16 @@ class MainActivity : DebugActivity() {
                 }
                 else {
                     Toast.makeText(applicationContext, "Usuário e/ou senha incorretos", Toast.LENGTH_LONG).show()
+                }
+
+                Prefs.setBoolean("lembrar", remember)
+                if (checkLembrar.isChecked) {
+                    Prefs.setString("lembrarNome", usuario)
+                    Prefs.setString("lembrarSenha", senha)
+                }
+                else {
+                    Prefs.setString("lembrarNome", "")
+                    Prefs.setString("lembrarSenha", "")
                 }
             }
         }

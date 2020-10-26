@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
+import kotlinx.android.synthetic.main.menu_lateral_cabecalho.*
 import kotlinx.android.synthetic.main.navigation_menu.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -45,8 +46,13 @@ class TelaInicialActivity : DebugActivity() {
     var produtos = listOf<Produto>()
 
     fun taskProdutos() {
-        this.produtos = ProdutoService.getProdutos()
-        recyclerProdutos?.adapter = ProdutosAdapter(this.produtos) {onClickProduto(it)}
+        Thread{
+            this.produtos = ProdutoService.getProdutos()
+            // atualizar lista
+            runOnUiThread {
+                recyclerProdutos?.adapter = ProdutosAdapter(this.produtos) {onClickProduto(it)}
+            }
+        }.start()
     }
 
     fun onClickProduto(produto: Produto) {
@@ -80,15 +86,15 @@ class TelaInicialActivity : DebugActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.action_atualizar -> this.onLoading()
-            R.id.action_config -> {
-                val intent = Intent(this, SettingsActivity::class.java)
-                Toast.makeText(this, "Clicou no botão de configurações", Toast.LENGTH_LONG).show()
-                startActivity(intent)
-            }
             R.id.action_sair -> {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 this.finish()
+            }
+            R.id.action_nova -> {
+                val intent = Intent(this, NovoProdutoActivity::class.java)
+                Toast.makeText(this, "Clicou no botão de adicionar", Toast.LENGTH_LONG).show()
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)

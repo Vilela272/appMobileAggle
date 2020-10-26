@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.adapter_produto.*
 
 class ProdutoActivity : AppCompatActivity() {
+    var produto: Produto? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_produto)

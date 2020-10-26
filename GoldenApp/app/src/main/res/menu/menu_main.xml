@@ -15,9 +15,10 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_config"
-        android:title="@string/action_config"
-        app:showAsAction="never" />
+        android:id="@+id/action_nova"
+        android:icon="@drawable/ic_adicionar_white"
+        android:title="@string/action_novaa"
+        />
 
     <item
         android:id="@+id/action_sair"

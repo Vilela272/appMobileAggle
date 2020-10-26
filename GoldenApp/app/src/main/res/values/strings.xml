@@ -13,4 +13,5 @@
     <string name="nav_localizacao">Localizacao</string>
     <string name="nav_abrir">Abrir</string>
     <string name="nav_fechar">Fechar</string>
+    <string name="action_novaa">Novo Produto</string>
 </resources>
