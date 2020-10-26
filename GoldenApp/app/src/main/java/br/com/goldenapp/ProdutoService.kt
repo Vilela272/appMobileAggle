@@ -48,15 +48,9 @@ object ProdutoService {
         }
     }
 
-    fun save(produto: Produto): br.com.goldenapp.Response {
-        if (AndroidUtils.isInternetDisponivel()) {
-            val json = HttpHelper.post("$host/produtos", produto.toJson())
-            return parserJson(json)
-        }
-        else {
-            saveOffline(produto)
-            return Response("OK", "Produto salvo no dispositivo")
-        }
+    fun save(produto: Produto): Response {
+        val json = HttpHelper.post("$host/produtos", produto.toJson())
+        return parserJson(json)
     }
 
     fun saveProduto(produto: Produto) {
@@ -79,15 +73,16 @@ object ProdutoService {
 
     fun delete(produto: Produto): br.com.goldenapp.Response {
         if (AndroidUtils.isInternetDisponivel()) {
-            val url = "$host/disciplinas/${produto.id}"
+            val url = "$host/produtos/${produto.id}"
             val json = HttpHelper.delete(url)
 
             return parserJson(json)
         } else {
             val dao = DatabaseManager.getProdutoDAO()
             dao.delete(produto)
-            return Response(status = "Ok", msg = "Dados salvos localmente")
+            return Response(status = "OK", msg = "Dados salvos localmente")
         }
+
     }
 
     inline fun <reified T> parserJson(json: String): T {

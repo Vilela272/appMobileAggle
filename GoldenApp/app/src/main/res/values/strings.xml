@@ -14,4 +14,5 @@
     <string name="nav_abrir">Abrir</string>
     <string name="nav_fechar">Fechar</string>
     <string name="action_novaa">Novo Produto</string>
+    <string name="action_remover">Remover Produto</string>
 </resources>

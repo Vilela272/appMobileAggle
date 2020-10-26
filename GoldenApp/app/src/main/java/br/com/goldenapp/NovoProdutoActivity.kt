@@ -12,7 +12,7 @@ class NovoProdutoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_novo_produto)
-        supportActionBar?.title = "Adicionar Produto"
+        supportActionBar?.title = "Adicionar novo produto"
 
         botaoSalvar.setOnClickListener {
             val produto = Produto()
@@ -27,15 +27,15 @@ class NovoProdutoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun taskAtualizar(produto: Produto){
-
+    private fun taskAtualizar(produto: Produto) {
+        // Thread para salvar a discilpina
         Thread {
-            ProdutoService.saveProduto(produto)
+            ProdutoService.save(produto)
             runOnUiThread {
+                // após cadastrar, voltar para activity anterior
                 finish()
             }
         }.start()
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
