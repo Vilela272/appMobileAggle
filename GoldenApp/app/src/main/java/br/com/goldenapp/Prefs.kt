@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 object Prefs {
     val PREF_ID = "GoldenApp"
 
+    // RETORNA O ARMAZÉM DE PREFERÊNCIAS PREF_ID
     private fun prefs(): SharedPreferences {
         val contexto = GoldenAppApplication.getInstance().applicationContext
         return contexto.getSharedPreferences(PREF_ID, 0)

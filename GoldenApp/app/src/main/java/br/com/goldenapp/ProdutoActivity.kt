@@ -1,27 +1,30 @@
 package br.com.goldenapp
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+
+import android.content.Context
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_produto.*
-import kotlinx.android.synthetic.main.activity_tela_inicial.*
-import kotlinx.android.synthetic.main.adapter_produto.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class ProdutoActivity : AppCompatActivity() {
+
+    private val context: Context get() = this
     var produto: Produto? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_produto)
 
-        val produto = intent.getSerializableExtra("produto")
+        produto = intent.getSerializableExtra("produto") as Produto
 
-        supportActionBar?.title = "Produto Golden Bear"
+        supportActionBar?.title = produto?.nome
         mensagemPaginaProduto.text = "Bem-vindo ao produto da Golden Bear"
-        Toast.makeText(this, "$produto.", Toast.LENGTH_LONG).show()
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -33,18 +36,21 @@ class ProdutoActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // id do item clicado
         when(item.itemId) {
+            // botão up navigation
             android.R.id.home -> {
                 val intent = Intent(this, TelaInicialActivity::class.java)
                 Toast.makeText(this, "Clicou no botão de voltar", Toast.LENGTH_SHORT).show()
                 this.finish()
             }
+            // remover o produto no WS
             R.id.action_remover -> {
-                // alerta para confirmar a remeção
+                // alerta para confirma a remoção
                 // só remove se houver confirmação positiva
                 AlertDialog.Builder(this)
                     .setTitle(R.string.app_name)
-                    .setMessage("Deseja excluir o produto")
+                    .setMessage("Tem certeza que você deseja excluir o produto ?")
                     .setPositiveButton("Sim") {
                             dialog, which ->
                         dialog.dismiss()
@@ -63,7 +69,8 @@ class ProdutoActivity : AppCompatActivity() {
             Thread {
                 ProdutoService.delete(this.produto as Produto)
                 runOnUiThread {
-                    this.finish()
+                    // após remover, voltar para a activity anterior
+                    finish()
                 }
             }.start()
         }

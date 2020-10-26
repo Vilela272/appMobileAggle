@@ -28,7 +28,7 @@ class NovoProdutoActivity : AppCompatActivity() {
     }
 
     private fun taskAtualizar(produto: Produto) {
-        // Thread para salvar a discilpina
+        // Thread para salvar O produto
         Thread {
             ProdutoService.save(produto)
             runOnUiThread {

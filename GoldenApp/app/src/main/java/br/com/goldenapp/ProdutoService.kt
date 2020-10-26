@@ -13,7 +13,7 @@ object ProdutoService {
     val host = "https://guilhermemoreira99.pythonanywhere.com"
     val TAG = "WS_GoldenApp"
 
-    fun getProdutos() : List<Produto> {
+    fun getProdutos(context: Context) : List<Produto> {
         var produtos = ArrayList<Produto>()
         if (AndroidUtils.isInternetDisponivel()) {
             val url = "$host/produtos"
@@ -30,7 +30,6 @@ object ProdutoService {
             val produtos = dao.findAll()
             return produtos
         }
-        //return DatabaseManager.getProdutoDAO().findAll()
     }
 
     fun getProduto (context: Context, id: Long): Produto? {
@@ -48,13 +47,15 @@ object ProdutoService {
         }
     }
 
-    fun save(produto: Produto): Response {
-        val json = HttpHelper.post("$host/produtos", produto.toJson())
-        return parserJson(json)
-    }
-
-    fun saveProduto(produto: Produto) {
-        DatabaseManager.getProdutoDAO().insert(produto)
+    fun save(produto: Produto): br.com.goldenapp.Response {
+        if (AndroidUtils.isInternetDisponivel()) {
+            val json = HttpHelper.post("$host/produtos", produto.toJson())
+            return parserJson(json)
+        }
+        else {
+            saveOffline(produto)
+            return Response("OK", "Produto salvo no dispositivo")
+        }
     }
 
     fun saveOffline(produto: Produto) : Boolean {
@@ -80,9 +81,8 @@ object ProdutoService {
         } else {
             val dao = DatabaseManager.getProdutoDAO()
             dao.delete(produto)
-            return Response(status = "OK", msg = "Dados salvos localmente")
+            return br.com.goldenapp.Response(status = "OK", msg = "Dados salvos localmente")
         }
-
     }
 
     inline fun <reified T> parserJson(json: String): T {

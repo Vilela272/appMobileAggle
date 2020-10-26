@@ -4,14 +4,15 @@ import androidx.room.Room
 
 object DatabaseManager {
 
+    // singleton
     private var dbInstance: GoldenAppDatabase
 
     init {
         val contexto = GoldenAppApplication.getInstance().applicationContext
         dbInstance = Room.databaseBuilder(
-            contexto,
-            GoldenAppDatabase::class.java,
-            "golden.sqllite"
+            contexto, // contexto global
+            GoldenAppDatabase::class.java, // Referência da classe do banco
+            "golden.sqllite" // nome do arquivo do banco
         ).build()
     }
 

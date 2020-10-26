@@ -11,10 +11,11 @@ class GoldenAppApplication: Application() {
     }
 
     companion object {
+        // singleton
         private var appInstance: GoldenAppApplication? = null
         fun getInstance(): GoldenAppApplication {
             if (appInstance == null) {
-                throw IllegalStateException("Configure application no Manifest")
+                throw IllegalStateException("Configure application no Android Manifest")
             }
             return appInstance!!
         }

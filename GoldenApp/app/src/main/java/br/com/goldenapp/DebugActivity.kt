@@ -30,7 +30,7 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         Log.d(TAG, className + ".onCreate() foi chamado")
     }
 
-    protected fun configuraMenuLateral() {
+    protected open fun configuraMenuLateral() {
         var toogle = ActionBarDrawerToggle(
             this,
             generic_layout,

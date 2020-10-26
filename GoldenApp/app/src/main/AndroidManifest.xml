@@ -28,9 +28,6 @@
             android:name=".ForumActivity"
             android:theme="@style/AppTheme.Toolbar" />
         <activity
-            android:name=".SettingsActivity"
-            android:theme="@style/AppTheme.Toolbar" />
-        <activity
             android:name=".TelaInicialActivity"
             android:theme="@style/AppTheme.Toolbar" />
         <activity android:name=".DebugActivity" />

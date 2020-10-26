@@ -20,9 +20,13 @@ import kotlinx.android.synthetic.main.menu_lateral_cabecalho.*
 import kotlinx.android.synthetic.main.navigation_menu.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class TelaInicialActivity : DebugActivity() {
+class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
+    private var produtos = listOf<Produto>()
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
@@ -33,7 +37,7 @@ class TelaInicialActivity : DebugActivity() {
         mensagemInicial.text = "Produtos Golden Bear"
         configuraMenuLateral()
 
-        recyclerProdutos?.layoutManager = LinearLayoutManager(this)
+        recyclerProdutos?.layoutManager = LinearLayoutManager(context)
         recyclerProdutos?.itemAnimator = DefaultItemAnimator()
         recyclerProdutos?.setHasFixedSize(true)
 
@@ -43,13 +47,14 @@ class TelaInicialActivity : DebugActivity() {
         taskProdutos()
     }
 
-    var produtos = listOf<Produto>()
-
     fun taskProdutos() {
+        // Código para procurar os produtos
+        // que será executado em segundo plano / Thread separada
         Thread{
-            this.produtos = ProdutoService.getProdutos()
+            this.produtos = ProdutoService.getProdutos(context)
             // atualizar lista
             runOnUiThread {
+                // Código para atualizar a UI com a lista de disciplinas
                 recyclerProdutos?.adapter = ProdutosAdapter(this.produtos) {onClickProduto(it)}
             }
         }.start()
@@ -57,9 +62,21 @@ class TelaInicialActivity : DebugActivity() {
 
     fun onClickProduto(produto: Produto) {
 
+        Toast.makeText(context, "Clicou produto ${produto.nome}", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, ProdutoActivity::class.java)
         intent.putExtra("produto", produto)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_REMOVE)
+    }
+
+    // configuraçao do navigation Drawer com a toolbar
+    override fun configuraMenuLateral() {
+        // ícone de menu (hamburger) para mostrar o menu
+        var toogle = ActionBarDrawerToggle(this, layoutMenuLateral, toolbar, R.string.nav_abrir, R.string.nav_fechar)
+
+        layoutMenuLateral.addDrawerListener(toogle)
+        toogle.syncState()
+
+        menu_lateral.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -107,5 +124,13 @@ class TelaInicialActivity : DebugActivity() {
             Thread.sleep(10000)
             progressBar.visibility = View.INVISIBLE
         }).start()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE) {
+            // atualizar lista de disciplinas
+            taskProdutos()
+        }
     }
 }
