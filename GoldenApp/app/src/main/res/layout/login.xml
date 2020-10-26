@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="20dp"
@@ -46,7 +46,7 @@
         android:textColor="@color/colorPrimary"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:textSize="20dp"
         android:text=" SENHA" />
 
@@ -58,6 +58,7 @@
         android:layout_marginTop="2dp"
         android:ems="10"
         android:gravity="center"
+        android:drawableBottom="@color/colorPrimaryDark"
         android:hint="Digite a sua senha"
         android:inputType="textPassword" />
 
@@ -98,8 +99,8 @@
 
     <ImageView
         android:id="@+id/campoImagem"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="380dp"
+        android:layout_height="150dp"
         android:layout_weight="1" />
 
 </LinearLayout>
