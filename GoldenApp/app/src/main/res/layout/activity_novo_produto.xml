@@ -7,22 +7,34 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="26dp"
+        android:text="Abaixo os campos para adcionar um novo produto. " />
+
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="18dp"
         android:textSize="20dp"
         android:text="Nome" />
 
     <EditText
         android:id="@+id/nomeDoProduto"
-        android:layout_width="291dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
+        android:textColorHighlight="@color/colorPrimaryDark"
         android:ems="10"
         android:gravity="center"
         android:hint="Digite o nome do produto"
@@ -41,7 +53,7 @@
 
     <EditText
         android:id="@+id/proprietario"
-        android:layout_width="291dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
@@ -63,7 +75,7 @@
 
     <EditText
         android:id="@+id/foto"
-        android:layout_width="291dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
@@ -85,22 +97,24 @@
 
     <EditText
         android:id="@+id/descricao"
-        android:layout_width="match_parent"
-        android:layout_height="164dp"
+        android:layout_width="400dp"
+        android:layout_height="110dp"
         android:ems="10"
-        android:gravity="center"
+        android:gravity="center|top"
         android:layout_gravity="center"
         android:hint="Digite a descrição do produto"
         android:inputType="textMultiLine" />
 
     <Button
         android:id="@+id/botaoSalvar"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:ems="10"
+        android:layout_marginLeft="5dp"
         android:drawableBottom="@color/colorPrimaryDark"
         android:paddingBottom="@dimen/cardview_compat_inset_shadow"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="1dp"
         android:textSize="20dp"
-        android:text="Cadastrar" />
+        android:text="Adicionar produto" />
 </LinearLayout>

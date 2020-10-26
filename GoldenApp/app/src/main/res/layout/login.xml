@@ -30,7 +30,7 @@
 
     <EditText
         android:id="@+id/campoUsuario"
-        android:layout_width="291dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
@@ -52,7 +52,7 @@
 
     <EditText
         android:id="@+id/campoSenha"
-        android:layout_width="291dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
@@ -69,7 +69,7 @@
 
         <Button
             android:id="@+id/buttonLogin"
-            android:layout_width="291dp"
+            android:layout_width="400dp"
             android:layout_height="87dp"
             android:layout_gravity="center"
             android:layout_margin="2dp"
@@ -92,7 +92,7 @@
 
     <CheckBox
         android:id="@+id/checkLembrar"
-        android:layout_width="291dp"
+        android:layout_width="400dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:text="Lembrar Login" />
