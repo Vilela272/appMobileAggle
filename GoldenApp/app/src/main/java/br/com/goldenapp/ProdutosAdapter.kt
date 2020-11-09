@@ -12,11 +12,9 @@ import com.squareup.picasso.Picasso
 class ProdutosAdapter (
 
     val produtos: List<Produto>,
-    val onClick: (Produto) -> Unit
-):RecyclerView.Adapter<ProdutosAdapter.ProdutosViewHolder>() {
+    val onClick: (Produto) -> Unit) :RecyclerView.Adapter<ProdutosAdapter.ProdutosViewHolder>() {
 
     class ProdutosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         val cardNome: TextView
         val cardImg: ImageView
         val cardProgress: ProgressBar

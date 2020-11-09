@@ -79,7 +79,7 @@ object ProdutoService {
 
     fun delete(produto: Produto): br.com.goldenapp.Response {
         if (AndroidUtils.isInternetDisponivel()) {
-            val url = "$host/disciplinas/${produto.id}"
+            val url = "$host/produtos/${produto.id}"
             val json = HttpHelper.delete(url)
 
             return parserJson(json)

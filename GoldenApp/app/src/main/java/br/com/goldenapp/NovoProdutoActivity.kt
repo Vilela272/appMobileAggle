@@ -12,7 +12,7 @@ class NovoProdutoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_novo_produto)
-        supportActionBar?.title = "Adicionar Produto"
+        supportActionBar?.title = "Adicionar novo produto"
 
         botaoSalvar.setOnClickListener {
             val produto = Produto()
