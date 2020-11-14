@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <!-- Colocar cardview com as disciplinas-->
+                    <!-- Colocar cardview com os produtos-->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerProdutos"
                         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                         android:cacheColorHint="@android:color/transparent"
                         android:clipToPadding="false"
                         android:divider="@null"
-                        android:dividerHeight="0dp"
+                        android:dividerHeight="5dp"
                         android:listSelector="@android:color/transparent"
                         android:scrollbarStyle="outsideOverlay"
                         android:scrollbars="vertical">

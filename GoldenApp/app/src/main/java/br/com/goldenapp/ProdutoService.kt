@@ -13,7 +13,7 @@ object ProdutoService {
     val host = "https://guilhermemoreira99.pythonanywhere.com"
     val TAG = "WS_GoldenApp"
 
-    fun getProdutos() : List<Produto> {
+    fun getProdutos(context: Context) : List<Produto> {
         var produtos = ArrayList<Produto>()
         if (AndroidUtils.isInternetDisponivel()) {
             val url = "$host/produtos"
@@ -30,7 +30,6 @@ object ProdutoService {
             val produtos = dao.findAll()
             return produtos
         }
-        //return DatabaseManager.getProdutoDAO().findAll()
     }
 
     fun getProduto (context: Context, id: Long): Produto? {
@@ -59,10 +58,6 @@ object ProdutoService {
         }
     }
 
-    fun saveProduto(produto: Produto) {
-        DatabaseManager.getProdutoDAO().insert(produto)
-    }
-
     fun saveOffline(produto: Produto) : Boolean {
         val dao = DatabaseManager.getProdutoDAO()
 
@@ -86,7 +81,7 @@ object ProdutoService {
         } else {
             val dao = DatabaseManager.getProdutoDAO()
             dao.delete(produto)
-            return Response(status = "Ok", msg = "Dados salvos localmente")
+            return br.com.goldenapp.Response(status = "OK", msg = "Dados salvos localmente")
         }
     }
 

@@ -27,15 +27,15 @@ class NovoProdutoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun taskAtualizar(produto: Produto){
-
+    private fun taskAtualizar(produto: Produto) {
+        // Thread para salvar O produto
         Thread {
-            ProdutoService.saveProduto(produto)
+            ProdutoService.save(produto)
             runOnUiThread {
+                // após cadastrar, voltar para activity anterior
                 finish()
             }
         }.start()
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

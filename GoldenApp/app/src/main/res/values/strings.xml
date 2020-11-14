@@ -14,5 +14,13 @@
     <string name="nav_abrir">Abrir</string>
     <string name="nav_fechar">Fechar</string>
     <string name="action_novaa">Novo Produto</string>
+<<<<<<< HEAD
     <string name="action_remover">Remover</string>
+=======
+    <string name="action_remover">Remover Produto</string>
+
+    <string name="API_KEY">AIzaSyCc3ZSMOGl6FPQsNenz1gc7NwbPeEtjIG8</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> 9524893e80209d821638fc3068cf5a6c6c72def1
 </resources>
