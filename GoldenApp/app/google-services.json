@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "98106331434",
+    "firebase_url": "https://goldenapp-f92c7.firebaseio.com",
+    "project_id": "goldenapp-f92c7",
+    "storage_bucket": "goldenapp-f92c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98106331434:android:fba4c4bbcb2f4862b0ce53",
+        "android_client_info": {
+          "package_name": "br.com.goldenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98106331434-6jfke812l831p3sfuupm43ak1l1ckjmj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnxskw8wru71ZYt07wwkKD1X3lDML1yb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98106331434-6jfke812l831p3sfuupm43ak1l1ckjmj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -55,9 +55,20 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             // atualizar lista
             runOnUiThread {
                 // Código para atualizar a UI com a lista de disciplinas
-                recyclerProdutos?.adapter = ProdutosAdapter(this.produtos) {onClickProduto(it)}
+                recyclerProdutos?.adapter =
+                    ProdutosAdapter(this.produtos) {
+                        onClickProduto(it)
+                    }
+                enviaNotificacao(this.produtos[0])
             }
         }.start()
+    }
+
+    fun enviaNotificacao(produto: Produto) {
+        val intent = Intent(this, ProdutoActivity::class.java)
+        intent.putExtra("produto", produto)
+
+        NotificationUtil.create(1, intent, "GoldenApp", "Você tem pendências no ${produto.nome}")
     }
 
     fun onClickProduto(produto: Produto) {

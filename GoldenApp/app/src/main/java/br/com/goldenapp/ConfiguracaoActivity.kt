@@ -3,8 +3,6 @@ package br.com.goldenapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_configuracao.*
-import kotlinx.android.synthetic.main.activity_forum.*
-import kotlinx.android.synthetic.main.activity_forum.layoutMenuLateral
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ConfiguracaoActivity : DebugActivity() {

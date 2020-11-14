@@ -52,24 +52,14 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Toast.makeText(this, "Menu de produtos", Toast.LENGTH_LONG).show()
                 startActivity(intent)
             }
-            R.id.nav_forum -> {
-                val intent = Intent(this, ForumActivity::class.java)
-                Toast.makeText(this, "Menu Fórum", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
-            }
             R.id.nav_configuracao -> {
                 val intent = Intent(this, ConfiguracaoActivity::class.java)
                 Toast.makeText(this, "Menu Configurações", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }
             R.id.nav_localizacao -> {
-                val intent = Intent(this, LocalizacaoActivity::class.java)
+                val intent = Intent(this, MapasActivity::class.java)
                 Toast.makeText(this, "Menu Localização", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
-            }
-            R.id.nav_mensagem -> {
-                val intent  = Intent(this, MensagemActivity::class.java)
-                Toast.makeText(this, "Menu Mensagem", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }
         }
